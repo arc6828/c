@@ -188,37 +188,105 @@ void example9() {
     printf("Pay : %d \n\n", pay);
 }
 
-int main(int argc, char** argv) {
-    char code;
-    int rate, pay, hour;
+
+void practice1(){
+    float salary, bonus;
+    printf("Enter salary : ");
+    scanf("%f", &salary);    
+    printf("--------------\n");
     
-    printf("Input job code : ");
+    if(salary < 5000){
+        salary = salary * 1.1;
+    }
+    
+    bonus = salary * 3;
+    
+    printf("New salary : %.2f \n", salary);
+    printf("Bonus : %.2f \n", bonus);    
+}
+
+void practice2(){
+    float old_salary, new_salary;
+    printf("Enter salary : ");
+    scanf("%f", &old_salary);    
+    printf("--------------\n");
+    
+    if(old_salary <= 10000){
+        new_salary = old_salary * 1.1;
+    }else{        
+        new_salary = old_salary * 1.05;
+    }   
+    
+    printf("Old salary : %.2f \n", old_salary);
+    printf("New salary : %.2f \n", new_salary);   
+}
+
+void practice10(){    
+    float distance, fee;
+    
+    printf("Enter distance : ");
+    scanf("%f", &distance);    
+    printf("-------------------\n");
+    
+    if(distance <= 350){
+        fee = 5.0 * distance;
+    }else{        
+        fee = (5.0 * 350) + (6.5 * (distance-350));
+    }   
+    
+    printf("Gasoline fee : %.2f \n", fee);  
+}
+
+void practice3(){   
+    int number,price;
+    printf("Enter a number of product : ");
+    scanf("%d", &number);    
+    printf("-------------------\n");
+    
+    if(number < 100){
+        price = 80 * number;
+    }else if(number >= 100 && number < 499){
+        price = 70 * number;
+    }else if(number >= 500 && number < 999){
+        price = 60 * number;    
+    }else{        
+        price = 50 * number;  
+    }       
+    printf("Total price : %d \n", price);  
+}
+void practice4(){ 
+    char code;
+    float discount, total, net_total,number;
+    
+    printf("Input product code : ");
     scanf("%c", &code);
-    printf("Input work hour : ");
-    scanf("%d", &hour);
+    printf("Input a number of product : ");
+    scanf("%f", &number);
     printf("-------------------\n");
 
     switch (code) {
         case 'A':
-            rate = 500;
+            total = number * 200;
+            discount = total * 0.10;
             break;
         case 'B':
-            rate = 400;
-            break;
-        case 'C':
-            rate = 300;
-            break;
-        default:
-            rate = 0;
-            printf("Invalid code!!!!\n");
+            total = number * 1000;
+            discount = total * 0.30;
+            break;        
+        default:            
+            total = number * 100;
+            discount = 0;
     }
 
-    pay = rate * hour;
+    net_total = total - discount;
 
-    printf("Job code : %c \n", code);
-    printf("Rate : %d \n", rate);
-    printf("Work hours : %d \n", hour);
-    printf("Pay : %d \n\n", pay);
+    printf("Total price : %.2f \n", total);
+    printf("Discount : %.2f \n", discount);
+    printf("Net total price : %.2f \n", net_total);
+}
+int main(int argc, char** argv) {
+    
+    practice4();
 
     return (EXIT_SUCCESS);
 }
